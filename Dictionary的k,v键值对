@@ -5,7 +5,7 @@ def add_element_to_dict(self, dict, key, value):
   dict.setdefault(key, [])
   dict[key].append(value)
 
-#--------使用：文件夹和文件--------
+#--1k-多v------使用：文件夹和文件--------
 # for creating a dict key: folder names, values: files in this folder
 
 self.create_folder_file_dict()
@@ -17,4 +17,15 @@ def create_folder_file_dict(self):
     folder_name = dir_.split('/')[-2]
     file_name = dir_.split('/')[-1]
     self.add_element_to_dict(self.folder_file_dict, folder_name, file_name)
-#-------------------------------------------------------
+
+#---------用某几列的值匹配到某行数据---------
+tba_map = {}
+for i in range(len(tba)):
+    tba_map[(tba[i,0],tba[i,1],tba[i,3])] = i
+    
+# Use
+for i in range(len(data)):
+    key = (data[i,0],data[i,1],data[i,3])
+    if key in tba_map:
+        index = tba_map[key]
+        #TODO
